@@ -3,9 +3,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 
-export default function GrievancePortal() {
+export default function App() {
   const [grievances, setGrievances] = useState([]);
   const [form, setForm] = useState({
     category: "general",
@@ -13,11 +13,11 @@ export default function GrievancePortal() {
     status: "Submitted"
   });
 
-  const handleChange = (field, value) => {
+  const handleChange = (field: string, value: string) => {
     setForm({ ...form, [field]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newGrievance = { ...form, id: Date.now(), name: "Hena" };
     setGrievances([...grievances, newGrievance]);
@@ -25,12 +25,10 @@ export default function GrievancePortal() {
 
     toast.success("Grievance submitted! ❤️");
 
-    // Send grievance to email using EmailJS or any backend integration
+    // Send grievance to email using Formspree
     await fetch("https://formspree.io/f/mqkrwqze", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: newGrievance.name,
         category: newGrievance.category,
@@ -42,6 +40,7 @@ export default function GrievancePortal() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto text-center">
+      <Toaster position="top-center" />
       <h1 className="text-4xl font-bold mb-6 text-pink-600">Grievance Box 💌</h1>
       <p className="text-gray-600 mb-8">Hey Hena 💖, let me know what's on your mind. I'm always listening. 😊</p>
 
