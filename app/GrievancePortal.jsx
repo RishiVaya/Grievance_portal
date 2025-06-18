@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { toast } from "sonner";
 import { Sparkles } from "lucide-react";
 
 export default function GrievancePortal() {
@@ -21,7 +20,7 @@ export default function GrievancePortal() {
     const newGrievance = { ...form, id: Date.now(), name: "Kulfi" };
     setForm({ category: "general", description: "", status: "Submitted" });
 
-    toast.success("Your note was received with a virtual hug 💫");
+    alert("Your note was received with a virtual hug 💫");
 
     await fetch("https://formspree.io/f/xrbklrpy", {
       method: "POST",
