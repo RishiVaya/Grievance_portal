@@ -23,7 +23,7 @@ export default function GrievancePortal() {
 
     toast.success("Your note was received with a virtual hug 💫");
 
-    await fetch("https://formspree.io/f/mqkrwqze", {
+    await fetch("https://formspree.io/f/xrbklrpy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
