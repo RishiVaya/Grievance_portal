@@ -26,7 +26,7 @@ export default function App() {
     toast.success("Grievance submitted! ❤️");
 
     // Send grievance to email using Formspree
-    await fetch("https://formspree.io/f/mqkrwqze", {
+    await fetch("https://formspree.io/f/xrbklrpy", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
